@@ -11,7 +11,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  * 
- * Record audio+video in html5 with webRTC, and convert them in single mp4 file.
+ * Record audio+video in html5 with webRTC, and convert them in single mp4 (or any other format) file with ffmpeg.
  */
 
 var Html5RTCRecorder = function(){};
