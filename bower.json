@@ -1,0 +1,37 @@
+{
+  "name": "Html5RTCRecorder",
+  "main": "Html5RTCRecorder.js",
+  "version": "master",
+  "homepage": "https://github.com/edouardkombo/Html5RTCRecorder",
+  "authors": [
+    "=edouardkombo <=edouard.kombo@gmail.com>"
+  ],
+  "description": "Record audio+video in html5 with webRTC, and convert them in single mp4 (or any other format) file with ffmpeg",
+  "keywords": [
+    "rtc",
+    "recorder",
+    "webRTC",
+    "html5",
+    "rtc",
+    "recorder",
+    "record",
+    "audio",
+    "and",
+    "video",
+    "encode",
+    "with",
+    "ffmpeg",
+    "html5",
+    "audio",
+    "video",
+    "record"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
