@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Html5RTCRecorder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+</head>
+
+<body >
+
+    <div id="header"> 
+        <button onclick="startRecording();">Start recording</button><br/><br/>
+        <button onclick="stopRecording();">Stop recording</button><br/><br/><br/><br/>
+    </div>
+        
+    <div id='media'>
+    </div>
+    
+    <div id='mediaResult'>
+    </div>    
+ 
+    <!--SCRIPTS-->
+    <script src="RecordRTC.js"></script>         
+    <script src="Html5RTCRecorder.js"></script>                
+    <script>
+        //Instantiate the object
+        var rtcRecorder                         = new Html5RTCRecorder();
+
+        //Set Parameters
+        rtcRecorder.rtc                         = RecordRTC;            //RecordRTC object
+        rtcRecorder.width                       = '640';                //Width of the canvas and video tag element
+        rtcRecorder.height                      = '480';                //Height of the canvas and video tag element
+
+        rtcRecorder.videoTagIdHost              = 'media';              //Div id where to store (video and canvas html tag element)
+        rtcRecorder.videoTagId                  = 'video';              //Id of the video tag element
+        rtcRecorder.canvasTagId                 = 'canvas';             //Id of the canvas tag element
+
+        rtcRecorder.videoExtension              = 'mp4';                //Desired single file format (webm, mp4, avi, ogv, wmv)
+        rtcRecorder.hideWebcamWhileRecording    = true;                 //Hide webcam while recording, strongly improves performance
+
+        rtcRecorder.callback                    = 'result';   //Name of the function to call after php conversion
+        rtcRecorder.mediaPath                   = "/medias/";           //Where to save the files on the disk
+        rtcRecorder.phpFile                     = "/form/save.php";  //Php file to process conversion
+
+        //Optional
+        rtcRecorder.frameRate                   = 60;                   //Set the video fps
+        rtcRecorder.quality                     = 10;                   //Set the video quality (max = 10)
+
+        //Init rtcRecorder object
+        rtcRecorder.init();
+        
+        function startRecording() {
+            rtcRecorder.startRecording();
+        }
+        
+        function stopRecording() {
+            rtcRecorder.stopRecording();            
+        }
+        
+        function result() {
+            var videoResult = document.createElement('video');
+            videoResult.src = rtcRecorder.urlToStream;
+            videoResult.setAttribute('autoplay', false);         
+            videoResult.setAttribute('controls', true);        
+            videoResult.id  = 'result';
+
+            document.getElementById('mediaResult').appendChild(videoResult);
+
+            videoResult.pause();             
+        }
+    </script>
+</body>
+</html>
