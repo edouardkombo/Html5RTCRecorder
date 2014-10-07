@@ -228,9 +228,19 @@ Html5RTCRecorder.prototype = {
         } else {
 
             if (tag === 'canvas') {
-               this.canvasTag   = myTag; 
+                this.canvasTag                  = myTag;
+                this.canvasTag.id               = tagId;                
+                this.canvasTag.width            = this.width;
+                this.canvasTag.height           = this.height;               
             } else {
-               this.videoTag   = myTag; 
+                this.videoTag                   = myTag;
+                this.videoTag.setAttribute('autoplay','true');
+                if (this.mediaStream !== '') {
+                    this.videoTag.src = window.URL.createObjectURL(this.mediaStream);
+                }                
+                this.videoTag.id                = tagId;                
+                this.videoTag.width             = this.width;
+                this.videoTag.height            = this.height;               
             }
         }
     },      
