@@ -47,7 +47,7 @@ if (isset($_FILES["audio-blob"])) {
                 $videoFile  = $fullPath . $newFilename .'.webm';
                 $mergedFile = $fullPath . $filename . '.' . $videoExtension;
 
-                $command = "ffmpeg -i $videoFile -i $audioFile -map 0:0 -map 1:0 -force_key_frames 00:00:00.000 -r $frameRate $mergedFile";
+                $command = "ffmpeg -i $videoFile -i $audioFile -map 0:0 -map 1:0 -r $frameRate $mergedFile";
                 exec($command, $output, $ret);
 
                 if ($ret){
