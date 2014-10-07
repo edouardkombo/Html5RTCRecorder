@@ -47,12 +47,12 @@ if (isset($_FILES["audio-blob"])) {
                 $videoFile  = $fullPath . $newFilename .'.webm';
                 $mergedFile = $fullPath . $filename . '.' . $videoExtension;
                 
-                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                    $command = "ffmpeg -i $videoFile -i $audioFile -map 0:0 -map 1:0 -r $frameRate $mergedFile";
-                } else {
+                //if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                $command = "ffmpeg -i $videoFile -i $audioFile -map 0:0 -map 1:0 -r $frameRate $mergedFile";
+                /*} else {
                     $command  = "ffmpeg -i $videoFile -i $audioFile -strict experimental -map 0:0 ";
                     $command .= "-map 1:0 $mergedFile";
-                }
+                }*/
                 exec($command, $output, $ret);
 
                 if ($ret){
