@@ -50,7 +50,7 @@ if (isset($_FILES["audio-blob"])) {
                 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                     $command = "ffmpeg -i $videoFile -i $audioFile -map 0:0 -map 1:0 -r $frameRate $mergedFile";
                 } else {
-                    $command  = "ffmpeg -i '.$audioFile.' -i '.$videoFile.' -map 0:0 -map 1:0 -strict experimental -r $frameRate '.$mergedFile 2>&1";
+                    $command  = "ffmpeg -i $videoFile -i $audioFile -map 0:0 -map 1:0 -strict experimental -r $frameRate $mergedFile";
                 }
                 exec($command, $output, $ret);
 
