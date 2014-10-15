@@ -40,6 +40,7 @@ Html5RTCRecorder.prototype = {
     frameRate: 60,
     quality: 10,
     client: '',
+    serverResponse: '',
     
     /**
      * Init all objects
@@ -265,6 +266,7 @@ Html5RTCRecorder.prototype = {
         {
             if ((this.client.readyState === 4) && (this.client.status === 200)) 
             {
+                this.serverResponse = this.client.response;
                 console.log(this.client.response);
 
                 this.urlToStream = this.mediaPath + this.fileName + '/' + this.fileName + '.' + this.videoExtension;
